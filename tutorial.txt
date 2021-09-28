@@ -1,0 +1,5 @@
+//test.kt a forraskor es a test.jar a kompilalt java kod
+kotlinc test.kt -include-runtime -d test.jar
+
+//test.jar a kompilalt fajl
+java -jar test.jar 
