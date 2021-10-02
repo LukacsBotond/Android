@@ -1,7 +1,8 @@
-./Fel*/*.jar
+*.jar
 ./Fel3/.gradle
-
+/Fel2/*/*.jar
 
 # Ignore Gradle build output directory
 ./Fel3/build
 *.bat
+Fel2/fel2_2/test.jar
