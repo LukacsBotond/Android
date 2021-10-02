@@ -1,7 +1,5 @@
+fun main() {
 
-
-fun main(){
-
-    var d = Date(2000, 1, 1);
-    println(d)
+    var d = Date(2012, 1, 1)
+    println(d.checkLeap())
 }

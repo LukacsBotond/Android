@@ -1,11 +1,8 @@
+data class Date(val year: Int, val month: Int, val day: Int) {}
 
-
-data class Date (var year:Int,var  month:Int,var day:Int) {
-    
+fun Date.checkLeap(): Boolean {
+    if ((this.year % 100 == 0 && this.year % 400 != 0) && this.year % 4 == 0) {
+        return true
+    }
+    return false
 }
-/*
-fun Date.checkLeap():Boolean{
-    if(Date.year % 100 == 0 && )
-}
-*/
-
