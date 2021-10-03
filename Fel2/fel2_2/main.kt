@@ -27,7 +27,7 @@ fun main(){
     var alma = "alma nagy's"
     var lista = listOf("apple", "pear", "meloasdsdasdn");
    
-    alma.monogram();
-    println(lista.joinList(lista, "#"));
-    println(lista.longest(lista))
+    println("monogram $alma : ${alma.monogram()}");
+    println("joined list: ${lista.joinList(lista, "#")}");
+    println("longest item: ${lista.longest(lista)}");
 }
