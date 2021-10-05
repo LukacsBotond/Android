@@ -7,12 +7,10 @@ data class Date(val year: Int, val month: Int, val day: Int) : Comparable<Date>,
 		else -> day - other.day
 	}
 
-    override fun compare(p0: Date, p1: Date): Int{
-        if( p0.month < p1.month){
-            return -1;
-        }
-        if(p0.month == p1.month) return 0;
-        return 1;
+    override fun compare(p0: Date, p1: Date): Int = when{
+		year != p0.year -> year - p1.year
+		month != p0.month -> month - p1.month
+		else -> p0.day - p1.day
     }
 
 }
