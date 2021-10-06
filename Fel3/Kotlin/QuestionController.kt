@@ -2,7 +2,8 @@ import java.io.File
 
 object QuestionController {
     private val questions = mutableListOf<Question>()
-
+    private var totalQuestion: Int = 5
+    private var correctNr: Int = 0
     init {
         val file = File("./questions.txt")
         var fileLines = mutableListOf<String>()
@@ -12,7 +13,7 @@ object QuestionController {
         val answers = mutableListOf<String>()
         var correct: Int
         for (i in fileLines) {
-            //println(i)
+            // println(i)
             if (index % 6 == 0) quest = i
             if (index % 6 < 5 && index % 6 > 0) answers.add(i)
             if (index % 6 == 5) {
@@ -28,38 +29,43 @@ object QuestionController {
         val ans = mutableListOf<Answer>()
         var index = 0
         for (i in answers) {
-            if (index == correct-1) {
+            if (index == correct - 1) {
                 ans.add(Answer(i, true))
             } else {
                 ans.add(Answer(i, false))
             }
-            index++;
+            index++
         }
         questions.add(Question(question, ans))
     }
 
     fun randomizeQuestions(): Question {
         val nrQuestions = questions.size
-        return questions[((0..nrQuestions-1).random())]
+        return questions[((0..nrQuestions - 1).random())]
     }
 
     fun doQuiz() {
-        val totQuestions = (0..5).random()
+        totalQuestion = (3..5).random()
         var answer: String?
-        for (i in 0..totQuestions) {
+        for (i in 1..totalQuestion) {
+            println()
+            println()
             val question = randomizeQuestions()
             question.printer()
-            println()
             println("Answer: 0/1/2/3?")
             answer = readLine()
             if (answer != null) {
                 if (question.correctAnswer(answer.toInt())) {
-                    println("Helyes valasz");
-                }
-                else{
+                    println("Helyes valasz")
+                    correctNr++;
+                } else {
                     println("Helytelen valasz")
                 }
             }
+            println()
+            println()
+            println("total/correct $totalQuestion / $correctNr")
         }
     }
 }
+

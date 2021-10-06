@@ -1,7 +1,8 @@
 
-data class Question(val text:String,val answers:List<Answer>) {
+data class Question(val text:String,var answers:List<Answer>) {
     fun printer(){
         println("Kerdes:    $text");
+        answers = answers.shuffled();
         for(i in answers){
             //println(i);
             i.printer();
