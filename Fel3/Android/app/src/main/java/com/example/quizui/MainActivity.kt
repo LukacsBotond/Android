@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         contClicked.setOnClickListener{
-
-
+            var intent = Intent(Intent.ACTION_DEFAULT, ContactsContract.Contacts.CONTENT_URI)
+            startActivity(intent)
         }
     }
 
