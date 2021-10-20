@@ -1,7 +1,5 @@
 package com.example.quizui
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +14,9 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 
 
 class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
@@ -39,64 +40,74 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
 
         btnClicked.setOnClickListener {
             sendMessage()
+            Log.d("mainActivity", "Button clicked")
             Toast.makeText(activity, "Button clicked", Toast.LENGTH_SHORT).show()
         }
-        contClicked.setOnClickListener{
-            /*
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-            getResult.launch(intent)
-    */
+        contClicked.setOnClickListener {
 
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+            getResult.launch(intent)
+
+/*
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
             startActivityForResult(intent, 0)
+
+ */
         }
     }
 
     // Receiver
-    private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-        if (result.resultCode == RESULT_OK) {
-            val contactUri = result.data?.data
-            val projection = arrayOf(
-                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER
-            )
-            val cursor = contactUri?.let {
-                requireContext().contentResolver.query(
-                    it, projection,
-                    null, null, null
+    private val getResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.resultCode == RESULT_OK) {
+                val contactUri = result.data?.data
+                val projection = arrayOf(
+                    ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER
                 )
-            }
+                val cursor = contactUri?.let {
+                    requireContext().contentResolver.query(
+                        it, projection,
+                        null, null, null
+                    )
+                }
 
-            if (cursor != null && cursor.moveToFirst()) {
-                val nameIndex =
-                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                val numberIndex =
-                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                val name = cursor.getString(nameIndex)
-                val number = cursor.getString(numberIndex)
+                if (cursor != null && cursor.moveToFirst()) {
+                    val nameIndex =
+                        cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                    val numberIndex =
+                        cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                    val name = cursor.getString(nameIndex)
+                    val number = cursor.getString(numberIndex)
 
-                // do something with name and phone
-                Log.d("mainActivity", name + number)
-                textbox.setText(name)
+                    // do something with name and phone
+                    Log.d("mainActivity", name + number)
+                    textbox.setText(name)
+                }
+                cursor?.close()
             }
-            cursor?.close()
         }
-    }
 
-        // Receiver
+    // Receiver
+    /*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             val contactUri = data?.data ?: return
-            val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER)
-            val cursor = requireContext().contentResolver.query(contactUri, projection,
-                null, null, null)
+            val projection = arrayOf(
+                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER
+            )
+            val cursor = requireContext().contentResolver.query(
+                contactUri, projection,
+                null, null, null
+            )
 
             if (cursor != null && cursor.moveToFirst()) {
-                val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                val nameIndex =
+                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
                 //val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
                 val name = cursor.getString(nameIndex)
                 // do something with name and phone
@@ -107,19 +118,24 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
         }
     }
 
+
+     */
     /** Called when the user taps the Send button */
     private fun sendMessage() {
-        /*
-        // Do something in response to button
-        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
-        val message = editText.text.toString()
-        val intent = Intent(this, MainActivity2::class.java).apply {
-            putExtra(EXTRA_MESSAGE, message)
-        }
-        startActivity(intent)
-         */
-    }
 
+        val fr = fragmentManager?.beginTransaction()
+        fr?.replace(R.id.fragment_qiuz_start, QuizFragment())
+        fr?.commit()
+
+/*
+        // Do something in response to button
+        val fm: FragmentManager = supportFragmentManager
+        fm.commit {
+            setReorderingAllowed(true)
+            add<QiuzStart>(R.id.fragment_quiz)
+        }
+*/
+    }
     companion object {
 
         private const val SELECT_PHONE_NUMBER = 111

@@ -5,14 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
 <androidx.fragment.app.FragmentContainerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_qiuz_start"
     android:name="com.example.quizui.QiuzStart"
     />
-
-
+<!--
+<androidx.fragment.app.FragmentContainerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_quiz"
+    android:name="com.example.quizui.QuizFragment" />
+-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

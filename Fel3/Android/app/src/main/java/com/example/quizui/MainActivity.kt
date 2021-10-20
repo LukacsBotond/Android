@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val fm: FragmentManager = supportFragmentManager
             fm.commit {
             setReorderingAllowed(true)
             add<QiuzStart>(R.id.fragment_qiuz_start)
-    }
-
+        }
     }
 }

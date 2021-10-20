@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_2.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_main2.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_first.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_qiuz.xml" value="0.33" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_qiuz_start.xml" value="0.19047619047619047" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_qiuz_start.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/startfragment.xml" value="0.1" />
       </map>
     </option>
   </component>
