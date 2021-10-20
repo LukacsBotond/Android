@@ -1,11 +1,7 @@
 package com.example.quizui
 
-import android.app.Activity
-import android.app.Instrumentation
+import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.util.Log
@@ -13,14 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import java.lang.StringBuilder
-import java.util.jar.Manifest
+
 
 class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
 
@@ -36,17 +27,65 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
         super.onViewCreated(view, savedInstanceState)
         val btnClicked = view.findViewById<Button>(R.id.button)
         val contClicked = view.findViewById<Button>(R.id.button2)
-        Log.d("mainActivity", "here1")
         btnClicked.setOnClickListener {
-            Log.d("mainActivity", "in click listener btn")
             sendMessage()
             Toast.makeText(activity, "Button clicked", Toast.LENGTH_SHORT).show()
-            Log.d("mainActivity", "clicked")
         }
         contClicked.setOnClickListener{
-            Log.d("mainActivity", "in click listener contBtn")
-            val intent = Intent(Intent.ACTION_DEFAULT, ContactsContract.Contacts.CONTENT_URI)
-            startActivity(intent)
+            /*
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+            getResult.launch(intent)
+    */
+
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+            startActivityForResult(intent, SELECT_PHONE_NUMBER)
+        }
+    }
+    /*
+    // Receiver
+    private val getResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()) {
+                val contactUri = data?.data ?: null
+                val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                    ContactsContract.CommonDataKinds.Phone.NUMBER)
+                val cursor = requireContext().contentResolver.query(contactUri, projection,
+                    null, null, null)
+
+                if (cursor != null && cursor.moveToFirst()) {
+                    val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                    val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                    val name = cursor.getString(nameIndex)
+                    val number = cursor.getString(numberIndex)
+
+                    // do something with name and phone
+
+
+                }
+                cursor?.close()
+        }
+    */
+
+        // Receiver
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            val contactUri = data?.data ?: return
+            val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                ContactsContract.CommonDataKinds.Phone.NUMBER)
+            val cursor = requireContext().contentResolver.query(contactUri, projection,
+                null, null, null)
+
+            if (cursor != null && cursor.moveToFirst()) {
+                val nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+                //val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                val name = cursor.getString(nameIndex)
+                // do something with name and phone
+                Log.d("mainActivity", name)
+            }
+            cursor?.close()
         }
     }
 
@@ -61,5 +100,11 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
         }
         startActivity(intent)
          */
+    }
+
+    companion object {
+
+        private const val SELECT_PHONE_NUMBER = 111
+
     }
 }
