@@ -32,13 +32,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="145dp"
-        android:layout_height="62dp"
+        android:layout_width="225dp"
+        android:layout_height="47dp"
         android:autofillHints="name"
         android:ems="15"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="@string/your_name"
+        android:text=""
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
