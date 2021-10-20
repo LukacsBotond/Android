@@ -15,6 +15,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import java.lang.StringBuilder
 import java.util.jar.Manifest
 
@@ -39,33 +42,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val btnClicked = findViewById<Button>(R.id.button)
-        val contClicked = findViewById<Button>(R.id.button2)
-
-
-
-        btnClicked.setOnClickListener {
-            sendMessage()
-            Toast.makeText(this@MainActivity, "Button clicked", Toast.LENGTH_SHORT).show()
-            Log.i("mainActivity", "clicked")
-        }
-
-        contClicked.setOnClickListener{
-            var intent = Intent(Intent.ACTION_DEFAULT, ContactsContract.Contacts.CONTENT_URI)
-            startActivity(intent)
-        }
+        val fm: FragmentManager = supportFragmentManager
+            fm.commit {
+            setReorderingAllowed(true)
+            add<QiuzStart>(R.id.fragment_qiuz_start)
     }
 
-
-    /** Called when the user taps the Send button */
-    private fun sendMessage() {
-        // Do something in response to button
-        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
-        val message = editText.text.toString()
-        val intent = Intent(this, MainActivity2::class.java).apply {
-            putExtra(EXTRA_MESSAGE, message)
-        }
-        startActivity(intent)
     }
 }
