@@ -25,6 +25,7 @@ import java.util.jar.Manifest
 const val EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE"
 
 class MainActivity : AppCompatActivity() {
+    
     /*
     private val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             result: ActivityResult ->

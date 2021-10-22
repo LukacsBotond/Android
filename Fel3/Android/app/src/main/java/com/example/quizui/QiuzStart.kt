@@ -48,13 +48,6 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
             getResult.launch(intent)
-
-/*
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
-            startActivityForResult(intent, 0)
-
- */
         }
     }
 
@@ -90,51 +83,11 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
             }
         }
 
-    // Receiver
-    /*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == RESULT_OK) {
-            val contactUri = data?.data ?: return
-            val projection = arrayOf(
-                ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-                ContactsContract.CommonDataKinds.Phone.NUMBER
-            )
-            val cursor = requireContext().contentResolver.query(
-                contactUri, projection,
-                null, null, null
-            )
-
-            if (cursor != null && cursor.moveToFirst()) {
-                val nameIndex =
-                    cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-                //val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                val name = cursor.getString(nameIndex)
-                // do something with name and phone
-                Log.d("mainActivity", name)
-                textbox.setText(name)
-            }
-            cursor?.close()
-        }
-    }
-
-
-     */
     /** Called when the user taps the Send button */
     private fun sendMessage() {
-
-        val fr = fragmentManager?.beginTransaction()
-        fr?.replace(R.id.fragment_qiuz_start, QuizFragment())
-        fr?.commit()
-
-/*
-        // Do something in response to button
-        val fm: FragmentManager = supportFragmentManager
-        fm.commit {
-            setReorderingAllowed(true)
-            add<QiuzStart>(R.id.fragment_quiz)
-        }
-*/
+        val fr = parentFragmentManager.beginTransaction()
+        fr.replace(R.id.fragment_qiuz_start, QuizFragment())
+        fr.commit()
     }
     companion object {
 

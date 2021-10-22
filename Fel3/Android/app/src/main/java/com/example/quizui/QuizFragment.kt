@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 
 
@@ -15,7 +16,8 @@ import android.widget.Toast
  * create an instance of this fragment.
  */
 class QuizFragment : Fragment(R.layout.fragment_qiuz) {
-
+    private lateinit var sendAnswer: Button;
+    private val kerdesek:QuestionController = QuestionController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,11 +26,17 @@ class QuizFragment : Fragment(R.layout.fragment_qiuz) {
         return inflater.inflate(R.layout.fragment_qiuz, container, false)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Toast.makeText(activity, "Quiz starts", Toast.LENGTH_SHORT).show()
         Log.d("mainActivity", "Quiz start")
+
+        sendAnswer = view.findViewById(R.id.qiuzSendAnswer)
+        kerdesek.oneQuiz(view)
+
+        sendAnswer.setOnClickListener{
+            kerdesek.oneQuiz(view)
+        }
     }
 
 }

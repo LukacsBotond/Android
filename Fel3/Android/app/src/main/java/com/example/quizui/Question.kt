@@ -9,7 +9,6 @@ data class Question(val text:String, var answers:List<Answer>) {
             i.printer()
         }
     }
-
     fun correctAnswer(index:Int):Boolean{
         if(index < 0 || index >= answers.size){
             throw RuntimeException("Hibas index")

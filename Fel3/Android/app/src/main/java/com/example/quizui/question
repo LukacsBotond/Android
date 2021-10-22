@@ -1,0 +1,18 @@
+? val modosithato?
+igen
+nem
+talan
+biztos
+2
+? hozzadhato uj tarolo:
+mutableListOf<String>()
+String
+ListOf<Int>
+Int
+1
+? ++ operator mit csinal?
+ilyen operator nincs
+kivon 1-et
+hoozzaad 1-et
+lenullazza a valtozot
+3
