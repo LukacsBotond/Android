@@ -16,4 +16,13 @@ data class Question(val text:String, var answers:List<Answer>) {
         return answers[index].correct
     }
 
+    fun correctAnswerByString(answer:String):Boolean{
+        for(i in 0..4){
+            if(answers[i].answer == answer){
+                return answers[i].correct
+            }
+        }
+        return false;
+    }
+
 }

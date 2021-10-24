@@ -14,15 +14,12 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 
 
 class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
 
     private lateinit var textbox: EditText
-
+    private var userName: String = "Bob"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,8 +33,8 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
         val btnClicked = view.findViewById<Button>(R.id.button)
         val contClicked = view.findViewById<Button>(R.id.button2)
 
-        textbox = view.findViewById<EditText>(R.id.editTextTextPersonName)
-
+        textbox = view.findViewById(R.id.editTextTextPersonName)
+        textbox.setText(userName)
         btnClicked.setOnClickListener {
             sendMessage()
             Log.d("mainActivity", "Button clicked")
@@ -72,12 +69,12 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
                         cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
                     val numberIndex =
                         cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                    val name = cursor.getString(nameIndex)
+                    userName = cursor.getString(nameIndex)
                     val number = cursor.getString(numberIndex)
 
                     // do something with name and phone
-                    Log.d("mainActivity", name + number)
-                    textbox.setText(name)
+                    Log.d("mainActivity", userName + number)
+                    textbox.setText(userName)
                 }
                 cursor?.close()
             }
@@ -86,7 +83,7 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
     /** Called when the user taps the Send button */
     private fun sendMessage() {
         val fr = parentFragmentManager.beginTransaction()
-        fr.replace(R.id.fragment_qiuz_start, QuizFragment())
+        fr.replace(R.id.fragment_qiuz_start, QuizLoop.newInstance(userName))
         fr.commit()
     }
     companion object {

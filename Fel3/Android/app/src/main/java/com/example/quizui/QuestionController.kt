@@ -10,7 +10,7 @@ object QuestionController {
     private val questions = mutableListOf<Question>()
     private var totalQuestion = 5
     private var correctNr = 0
-
+    private lateinit var question: Question
     init{
         val bigString =
                 "? val modosithato?\n" +
@@ -41,8 +41,7 @@ object QuestionController {
         var quest = ""
         val answers = mutableListOf<String>()
         var correct: Int
-        var index : Int = 0
-        for (i in lines) {
+        for ((index, i) in lines.withIndex()) {
             if (index % 6 == 0) quest = i
             if (index % 6 in 1..4) answers.add(i)
             if (index % 6 == 5) {
@@ -50,7 +49,6 @@ object QuestionController {
                 insert(quest, answers, correct)
                 answers.clear()
             }
-            index++
         }
 
     }
@@ -86,8 +84,8 @@ object QuestionController {
 
          */
 
-    fun prepare(){
-
+    fun getcorrectNr():Int{
+        return correctNr
     }
 
     private fun insert(question: String, answers: List<String>, correct: Int) {
@@ -113,7 +111,7 @@ object QuestionController {
         for (i in 1..totalQuestion) {
             println()
             println()
-            val question = randomizeQuestions()
+            question = randomizeQuestions()
 
             println("com.example.quizui.Answer: 0/1/2/3?")
             answer = readLine()
@@ -134,16 +132,35 @@ object QuestionController {
     fun oneQuiz(view:View){
         val kerdes = view.findViewById<TextView>(R.id.QuizQuestion)
         val radiog = view.findViewById<RadioGroup>(R.id.radioGroup)
-        val question = randomizeQuestions()
+        question = randomizeQuestions()
 
         kerdes.text = question.text
         val checked = radiog.checkedRadioButtonId
-        radiog.findViewById<RadioButton>(R.id.radioButton).setText(question.answers[0].answer)
-        radiog.findViewById<RadioButton>(R.id.radioButton2).setText(question.answers[1].answer)
-        radiog.findViewById<RadioButton>(R.id.radioButton3).setText(question.answers[2].answer)
-        radiog.findViewById<RadioButton>(R.id.radioButton4).setText(question.answers[3].answer)
+        radiog.findViewById<RadioButton>(R.id.radioButton).text = question.answers[0].answer
+        radiog.findViewById<RadioButton>(R.id.radioButton2).text = question.answers[1].answer
+        radiog.findViewById<RadioButton>(R.id.radioButton3).text = question.answers[2].answer
+        radiog.findViewById<RadioButton>(R.id.radioButton4).text = question.answers[3].answer
         Log.d("mainActivity", "Checked $checked")
         radiog.clearCheck()
+    }
+
+    fun checkQuiz(view: View): Boolean{
+        val radiog = view.findViewById<RadioGroup>(R.id.radioGroup)
+        val checked = radiog.checkedRadioButtonId
+        if (checked == -1){
+            Log.d("mainActivity", "Nonce checked")
+            throw NoSuchFieldError("None checked")
+        }
+        val selectedRadioButton = view.findViewById<RadioButton>(checked)
+        Log.d("mainActivity", checked.toString())
+        if(question.correctAnswerByString(selectedRadioButton.text as String)){
+            Log.d("mainActivity", "Correct answer")
+            correctNr++
+            return true
+        }
+        Log.d("mainActivity", "Incorrect answer")
+        return false
+
     }
 }
 
