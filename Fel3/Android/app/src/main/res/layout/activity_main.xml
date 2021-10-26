@@ -8,8 +8,8 @@
 <androidx.fragment.app.FragmentContainerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_qiuz_start"
-    android:name="com.example.quizui.QiuzStart"
+    android:id="@+id/fragment_home"
+    android:name="com.example.quizui.HomeFragment"
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

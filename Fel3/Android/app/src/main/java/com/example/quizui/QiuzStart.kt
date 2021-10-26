@@ -82,8 +82,9 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
 
     /** Called when the user taps the Send button */
     private fun sendMessage() {
+
         val fr = parentFragmentManager.beginTransaction()
-        fr.replace(R.id.fragment_qiuz_start, QuizLoop.newInstance(userName))
+        fr.replace((requireView().parent as ViewGroup).id,QuizLoop.newInstance(userName))
         fr.commit()
     }
     companion object {

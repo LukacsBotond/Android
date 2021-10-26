@@ -29,24 +29,24 @@ class QuizFinal : Fragment() {
 
         nameText.text = arguments?.getString("userName")?: "NullBob"
         Log.d("mainActivity", "name set")
-        val result = "\${arguments?.getInt(\"corrQuestion\") / ${arguments?.getInt("totQuestion")}}"
+        val result = "${arguments?.getInt("corrQuestion")} / ${arguments?.getInt("totQuestion")}"
         resultText.text = result
         Log.d("mainActivity", "result set")
     }
     companion object {
         fun newInstance(userName: String,totQuestion:Int,corrQuestion:Int): QuizFinal {
-        val fragment = QuizFinal()
-        val args = Bundle()
-        args.putInt("totQuestion", totQuestion)
-        args.putInt("corrQuestion",corrQuestion)
-        args.putString("userName", userName)
+            val fragment = QuizFinal()
+            val args = Bundle()
+            args.putInt("totQuestion", totQuestion)
+            args.putInt("corrQuestion",corrQuestion)
+            args.putString("userName", userName)
 
-        Log.d("mainActivity", "QuizFinal")
-        Log.d("mainActivity", "Username: $userName")
-        Log.d("mainActivity", "totQuestion: $totQuestion")
-        Log.d("mainActivity", "corrQuestion: $corrQuestion")
-        fragment.arguments = args
-        return fragment
+            Log.d("mainActivity", "QuizFinal")
+            Log.d("mainActivity", "Username: $userName")
+            Log.d("mainActivity", "totQuestion: $totQuestion")
+            Log.d("mainActivity", "corrQuestion: $corrQuestion")
+            fragment.arguments = args
+            return fragment
     }
     }
 }

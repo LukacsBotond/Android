@@ -8,21 +8,6 @@ import androidx.fragment.app.commit
 
 
 class MainActivity : AppCompatActivity() {
-    
-    /*
-    private val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            result: ActivityResult ->
-        if(result.resultCode == Activity.RESULT_OK){
-            val contracUri = result.data?.data
-            if(contracUri != null){
-                var projection = arrayOf(
-                    ContractsContract.C
-                )
-            }
-        }
-    }
-*/
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val fm: FragmentManager = supportFragmentManager
             fm.commit {
             setReorderingAllowed(true)
-            add<QiuzStart>(R.id.fragment_qiuz_start)
+            add<HomeFragment>(R.id.fragment_home)
         }
     }
 }
