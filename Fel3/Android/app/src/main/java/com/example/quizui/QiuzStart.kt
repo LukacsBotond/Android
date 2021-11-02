@@ -41,7 +41,6 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
             Toast.makeText(activity, "Button clicked", Toast.LENGTH_SHORT).show()
         }
         contClicked.setOnClickListener {
-
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
             getResult.launch(intent)
@@ -82,10 +81,13 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
 
     /** Called when the user taps the Send button */
     private fun sendMessage() {
+
         val fr = parentFragmentManager.beginTransaction()
-        fr.replace(R.id.fragment_qiuz_start, QuizLoop.newInstance(userName))
+        felh[userName] = User(userName,"0/0")
+        fr.replace((requireView().parent as ViewGroup).id,QuizLoop.newInstance(userName))
         fr.commit()
     }
+
     companion object {
 
         private const val SELECT_PHONE_NUMBER = 111

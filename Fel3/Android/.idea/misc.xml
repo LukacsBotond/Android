@@ -4,14 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_2.xml" value="0.2957427536231884" />
-        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/activity_main2.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/content_2.xml" value="0.5" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_first.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_items.xml" value="0.5" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_qiuz.xml" value="0.25" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_qiuz_start.xml" value="0.19047619047619047" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_quiz_final.xml" value="0.33" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_quiz_loop.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/layout/fragment_read_questions.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Fel3/Android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.33" />
       </map>
