@@ -21,16 +21,21 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         Log.d("mainActivity", "Home screen")
-
         val sendAnswer:Button = view.findViewById(R.id.button3)
+        val readQuestions:Button = view.findViewById(R.id.button4)
 
         sendAnswer.setOnClickListener{
             Log.d("mainActivity", "Quiz start clicked")
-
             val fr = parentFragmentManager.beginTransaction()
             fr.replace((requireView().parent as ViewGroup).id,QiuzStart())
             fr.commit()
+        }
 
+        readQuestions.setOnClickListener{
+            Log.d("mainActivity", "ReadQuestions clicked")
+            val fr = parentFragmentManager.beginTransaction()
+            fr.replace((requireView().parent as ViewGroup).id,ReadQuestions.newInstance())
+            fr.commit()
         }
     }
 }

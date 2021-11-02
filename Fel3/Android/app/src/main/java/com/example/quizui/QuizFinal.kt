@@ -41,6 +41,7 @@ class QuizFinal : Fragment() {
             args.putInt("corrQuestion",corrQuestion)
             args.putString("userName", userName)
 
+            felh[userName]?.score = "$corrQuestion/$totQuestion"
             Log.d("mainActivity", "QuizFinal")
             Log.d("mainActivity", "Username: $userName")
             Log.d("mainActivity", "totQuestion: $totQuestion")
