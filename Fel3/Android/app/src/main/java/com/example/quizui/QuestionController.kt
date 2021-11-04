@@ -13,30 +13,74 @@ object QuestionController {
     private lateinit var question: Question
     init{
         val bigString =
-                "? val modosithato?\n" +
-                "igen\n" +
-                "nem\n" +
-                "talan\n" +
-                "biztos\n" +
-                "2\n" +
-                "? hozzadhato uj tarolo:\n" +
-                "mutableListOf<String>()\n" +
-                "String\n" +
-                "ListOf<Int>\n" +
-                "Int\n" +
-                "1\n" +
-                "? ++ operator mit csinal?\n" +
-                "ilyen operator nincs\n" +
-                "kivon 1-et\n" +
-                "hoozzaad 1-et\n" +
-                "lenullazza a valtozot\n" +
-                "3\n"+
-                "? txt fajl megnyitasa androidon\n"+
-                "konnyu\n"+
-                "gyerekjatek\n"+
-                "bonyolult\n"+
-                "nem lehetseges\n"+
-                "3"
+                    "? val modosithato?\n" +
+                    "igen\n" +
+                    "nem\n" +
+                    "talan\n" +
+                    "biztos\n" +
+                    "2\n" +
+                    "? hozzadhato uj tarolo:\n" +
+                    "mutableListOf<String>()\n" +
+                    "String\n" +
+                    "ListOf<Int>\n" +
+                    "Int\n" +
+                    "1\n" +
+                    "? ++ operator mit csinal?\n" +
+                    "ilyen operator nincs\n" +
+                    "kivon 1-et\n" +
+                    "hoozzaad 1-et\n" +
+                    "lenullazza a valtozot\n" +
+                    "3\n"+
+                    "? txt fajl megnyitasa androidon\n"+
+                    "konnyu\n"+
+                    "gyerekjatek\n"+
+                    "bonyolult\n"+
+                    "nem lehetseges\n"+
+                    "3\n" +
+                    "? Mi nincs a data classben?\n" +
+                    "auto generalt toString() methodus\n"+
+                    "auto generalt hashCode() es equals() methodusok\n"+
+                    "generalt copy() methodus\n"+
+                    "automatikus konverzio JSON ra\n"+
+                    "4\n"+
+                    "? Milyen nyelvet NEM szupportal a KOTLIN?\n"+
+                    "JavaScript\n"+
+                    "Kotlin\n"+
+                    ".NET\n"+
+                    "Java\n"+
+                    "3\n"+
+                    "? Helyes mod string Long tipusra alakitasara\n"+
+                    "val: l: Long = Long.praseLong(\"42\") \n"+
+                    "val: l: Long = \"42\".toLong() \n"+
+                    "val: l: Long = (Long)\"42\" \n"+
+                    "val: l: Long = <Long>\"42\" \n"+
+                    "2\n"+
+                    "? Mi a tipusa a:  val a = arrayOf(1,2,3) ?\n"+
+                    "Int[]\n"+
+                    "IntArray\n"+
+                    "int[]\n"+
+                    "Array<Int>\n"+
+                    "4\n"+
+                    "? Mi kotlinban a kovetkezo Java kod: int x = a ? b : c?\n"+
+                    "val x = if(a)b:c\n"+
+                    "val x = a?:b,c\n"+
+                    "val x = if(a)b else c\n"+
+                    "val x = a?b:c\n"+
+                    "3\n"+
+                    "? Mi a \"to\" a val x = 15 to 30 -ban \n"+
+                    "keszit egy range-t 15-tol 30-ig\n"+
+                    "syntax error\n"+
+                    "inflix extension function csinal egy Pair(15,30)-at\n"+
+                    "Kotlin kulcsszo a Pair(15,30) -ra"+
+                    "3\n"+
+                    "Mi igaz az allitasra? class Person(val name: String)\n"+
+                    "a name adattag privat\n"+
+                    "Package private\n"+
+                    "Publikus\n"+
+                    "Kibovitheto mas osztalyokkal\n"+
+                    "3\n"+
+                    
+
         val lines = bigString.lines()
         var quest = ""
         val answers = mutableListOf<String>()
