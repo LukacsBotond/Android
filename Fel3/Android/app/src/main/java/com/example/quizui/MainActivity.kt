@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         bottomNav?.setupWithNavController(navController)
     }
-
+/*
     override fun onBackPressed() {
         AlertDialog.Builder(this).apply {
             setTitle("Please confirm.")
@@ -53,4 +53,6 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragment_home)
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+ */
 }

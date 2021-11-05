@@ -2,31 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/fragment_home"
+        android:id="@+id/homeFragment"
         android:icon="@android:drawable/ic_menu_revert"
         android:orderInCategory="1"
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/quizStartFragment"
+        android:id="@+id/qiuzStart"
         android:icon="@android:drawable/ic_media_play"
         android:orderInCategory="2"
         android:title="Quiz"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/profile"
         android:icon="@android:drawable/ic_menu_myplaces"
         android:orderInCategory="3"
         android:title="Profile"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/readQuestionFragment"
+        android:id="@+id/readQuestion"
         android:icon="@android:drawable/ic_dialog_info"
         android:orderInCategory="4"
         android:title="Questions"
         app:showAsAction="always" />
     <item
-        android:id="@+id/addQuestionFragment"
+        android:id="@+id/addQuestion"
         android:icon="@android:drawable/ic_input_add"
         android:orderInCategory="5"
         android:title="add question"
