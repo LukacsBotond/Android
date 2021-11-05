@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+/*
         val fm: FragmentManager = supportFragmentManager
             fm.commit {
             setReorderingAllowed(true)
             add<HomeFragment>(R.id.fragment_home)
         }
-        // Bottom navigation
-        val navController = findNavController(R.id.fragment_home)
+ */
+        val navController = findNavController(R.id.myNavHostFragment)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         bottomNav?.setupWithNavController(navController)
     }

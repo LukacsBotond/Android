@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 
 class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
@@ -81,11 +82,8 @@ class QiuzStart : Fragment(R.layout.fragment_qiuz_start) {
 
     /** Called when the user taps the Send button */
     private fun sendMessage() {
-
-        val fr = parentFragmentManager.beginTransaction()
         felh[userName] = User(userName,"0/0")
-        fr.replace((requireView().parent as ViewGroup).id,QuizLoop.newInstance(userName))
-        fr.commit()
+        this.findNavController().navigate(QiuzStartDirections.actionQiuzStartToQuizLoop(userName))
     }
 
     companion object {

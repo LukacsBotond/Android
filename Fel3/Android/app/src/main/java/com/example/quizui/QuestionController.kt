@@ -71,21 +71,20 @@ object QuestionController {
                     "keszit egy range-t 15-tol 30-ig\n"+
                     "syntax error\n"+
                     "inflix extension function csinal egy Pair(15,30)-at\n"+
-                    "Kotlin kulcsszo a Pair(15,30) -ra"+
+                    "Kotlin kulcsszo a Pair(15,30) -ra\n"+
                     "3\n"+
-                    "Mi igaz az allitasra? class Person(val name: String)\n"+
+                    "? Mi igaz az allitasra? class Person(val name: String)\n"+
                     "a name adattag privat\n"+
                     "Package private\n"+
                     "Publikus\n"+
                     "Kibovitheto mas osztalyokkal\n"+
-                    "3\n"+
-                    
-
+                    "3\n"
         val lines = bigString.lines()
         var quest = ""
         val answers = mutableListOf<String>()
         var correct: Int
         for ((index, i) in lines.withIndex()) {
+            Log.d("mainActivity", "$index $i")
             if (index % 6 == 0) quest = i
             if (index % 6 in 1..4) answers.add(i)
             if (index % 6 == 5) {
@@ -98,7 +97,7 @@ object QuestionController {
     }
 
 
-    //! this works fine when compiling on PC, but it don't copy the file to the phone
+    //! gepen megy, de telefonon nem, mert nem nem tolti fel a fajlt telepiteskor...
         /*
     init {
         try {
