@@ -2,27 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/startFragment"
+        android:id="@+id/homeFragment"
         android:icon="@android:drawable/ic_menu_revert"
         android:orderInCategory="1"
         android:title="Home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/resultFragment"
-        android:icon="@android:drawable/ic_lock_power_off"
+        android:id="@+id/qiuzStart"
+        android:icon="@android:drawable/ic_media_play"
         android:orderInCategory="2"
-        android:title="End Quiz"
-        app:showAsAction="always" />
+        android:title="Quiz"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/resultFragment1"
-        android:icon="@android:drawable/ic_lock_power_off"
+        android:id="@+id/profile"
+        android:icon="@android:drawable/ic_menu_myplaces"
         android:orderInCategory="3"
-        android:title="End Quiz"
+        android:title="Profile"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/readQuestion"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:orderInCategory="4"
+        android:title="Questions"
         app:showAsAction="always" />
     <item
-        android:id="@+id/resultFragment2"
-        android:icon="@android:drawable/ic_lock_power_off"
-        android:orderInCategory="4"
-        android:title="End Quiz"
+        android:id="@+id/addQuestion"
+        android:icon="@android:drawable/ic_input_add"
+        android:orderInCategory="5"
+        android:title="add question"
         app:showAsAction="always" />
 </menu>

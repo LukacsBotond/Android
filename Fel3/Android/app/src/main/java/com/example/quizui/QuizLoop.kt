@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 
 /**
@@ -20,6 +22,8 @@ class QuizLoop : Fragment(R.layout.fragment_quiz_loop) {
     private var totQuestion:Int = 5
     private var currQuestion:Int = 0;
     private val kerdesek:QuestionController = QuestionController
+
+    private val args : QuizLoopArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,27 +56,20 @@ class QuizLoop : Fragment(R.layout.fragment_quiz_loop) {
         }
     }
     private fun startQuizFinal(){
-        val args = arguments
-        val userName = args?.getString("userName") ?: "NullBob"
+
+        val userName = args.userName
 
         val corrQuestion:Int = kerdesek.getcorrectNr()
         Log.d("mainActivity", "Username: $userName")
         Log.d("mainActivity", "totQuestion: $totQuestion")
         Log.d("mainActivity", "corrQuestion: $corrQuestion")
+        felh[userName]?.score ?: "$corrQuestion / $totQuestion"
+        this.findNavController().navigate(QuizLoopDirections.actionQuizLoopToQuizFinal(userName,totQuestion,corrQuestion))
+        /*
         val fr = parentFragmentManager.beginTransaction()
         fr.replace((requireView().parent as ViewGroup).id,QuizFinal.newInstance(userName,totQuestion,corrQuestion))
         fr.commit()
-
+*/
         Log.d("mainActivity", "Next fragment")
-    }
-
-    companion object {
-        fun newInstance(userName: String): QuizLoop {
-            val fragment = QuizLoop()
-            val args = Bundle()
-            args.putString("userName", userName)
-            fragment.arguments = args
-            return fragment
-        }
     }
 }

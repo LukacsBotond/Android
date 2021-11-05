@@ -5,8 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import kotlin.properties.Delegates
 
 /**
  * A simple [Fragment] subclass.
@@ -14,7 +18,7 @@ import androidx.fragment.app.Fragment
  * create an instance of this fragment.
  */
 class QuizFinal : Fragment() {
-
+    private val args: QuizFinalArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,27 +31,16 @@ class QuizFinal : Fragment() {
         val nameText = view.findViewById<TextView>(R.id.FinalUsername)
         val resultText = view.findViewById<TextView>(R.id.FinalQuizResult)
 
-        nameText.text = arguments?.getString("userName")?: "NullBob"
+
+        nameText.text = args.userName
         Log.d("mainActivity", "name set")
-        val result = "${arguments?.getInt("corrQuestion")} / ${arguments?.getInt("totQuestion")}"
+        val result = "${args.corrQuestion} / ${args.totQuestion}"
         resultText.text = result
         Log.d("mainActivity", "result set")
-    }
-    companion object {
-        fun newInstance(userName: String,totQuestion:Int,corrQuestion:Int): QuizFinal {
-            val fragment = QuizFinal()
-            val args = Bundle()
-            args.putInt("totQuestion", totQuestion)
-            args.putInt("corrQuestion",corrQuestion)
-            args.putString("userName", userName)
 
-            felh[userName]?.score = "$corrQuestion/$totQuestion"
-            Log.d("mainActivity", "QuizFinal")
-            Log.d("mainActivity", "Username: $userName")
-            Log.d("mainActivity", "totQuestion: $totQuestion")
-            Log.d("mainActivity", "corrQuestion: $corrQuestion")
-            fragment.arguments = args
-            return fragment
-    }
+        val ret: Button = view.findViewById(R.id.button6)
+        ret.setOnClickListener{
+            this.findNavController().navigate(QuizFinalDirections.actionQuizFinalToHomeFragment2())
+        }
     }
 }
