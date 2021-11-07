@@ -7,6 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdk 31
+    buildTypes {
+        customDebugType {
+            debuggable true
+        }
+    }
 
     defaultConfig {
         applicationId "com.example.quizui"

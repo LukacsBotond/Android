@@ -5,5 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Item (val imageResource:Int,
-                 val text1: String,
-                 var text2: String) : Parcelable
+                 val question: String,
+                 val answer1:String,
+                 val answer2:String,
+                 val answer3:String,
+                 val answer4:String) : Parcelable
