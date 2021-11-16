@@ -78,7 +78,7 @@ object QuestionController {
                     "Package private\n"+
                     "Publikus\n"+
                     "Kibovitheto mas osztalyokkal\n"+
-                    "3\n"
+                    "3"
         val lines = bigString.lines()
         var quest = ""
         val answers = mutableListOf<String>()
@@ -93,9 +93,8 @@ object QuestionController {
                 answers.clear()
             }
         }
-
+        Log.d("mainActivity", "end question read")
     }
-
 
     //! gepen megy, de telefonon nem, mert nem nem tolti fel a fajlt telepiteskor...
         /*
@@ -129,6 +128,10 @@ object QuestionController {
 
     fun getcorrectNr():Int{
         return correctNr
+    }
+
+    fun getQuestions():MutableList<Question>{
+        return QuestionController.questions
     }
 
     private fun insert(question: String, answers: List<String>, correct: Int) {
