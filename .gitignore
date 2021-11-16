@@ -4,3 +4,5 @@
 # Ignore Gradle build output directory
 ./Fel3/build
 *.bat
+AndroidNavigationExample/
+Eloadas6RecyclerView/
