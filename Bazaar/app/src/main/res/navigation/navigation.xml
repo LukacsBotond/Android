@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/startScreen">
+    <fragment
+        android:id="@+id/startScreen"
+        android:name="com.example.bazaar.StartScreen"
+        android:label="fragment_start_screen"
+        tools:layout="@layout/fragment_start_screen" >
+        <action
+            android:id="@+id/action_startScreen_to_startLoading"
+            app:destination="@id/startLoading" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.bazaar.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_timeline"
+            app:destination="@id/timeline" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.bazaar.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/timeline"
+        android:name="com.example.bazaar.Timeline"
+        android:label="fragment_timeline"
+        tools:layout="@layout/fragment_timeline" />
+    <fragment
+        android:id="@+id/startLoading"
+        android:name="com.example.bazaar.StartLoading"
+        android:label="fragment_start_loading"
+        tools:layout="@layout/fragment_start_loading" >
+        <action
+            android:id="@+id/action_startLoading_to_login"
+            app:destination="@id/login" />
+    </fragment>
+</navigation>
