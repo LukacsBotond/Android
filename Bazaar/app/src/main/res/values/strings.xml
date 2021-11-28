@@ -5,4 +5,11 @@
     <string name="log_in">log in</string>
     <string name="e_mail">e-mail</string>
     <string name="password">password</string>
+    <string name="name">Name</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="click_here">Click here</string>
+    <string name="new_to_bazzar">New to Bazzar?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="username">Username</string>
 </resources>

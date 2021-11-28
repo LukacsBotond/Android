@@ -10,6 +10,7 @@ object BackendConstants {
      * Specific URL segments, which will be concatenated with the base URL.
      */
     const val LOGIN_URL = "user/login"
+    const val REGISTER_URL = "user/register"
     const val GET_PRODUCT_URL = "products"
 
     /**
