@@ -2,6 +2,7 @@ package com.example.bazaar.api
 
 import com.example.bazaar.api.types.Reponse.ForgotPasswordResponse
 import com.example.bazaar.api.types.Reponse.LoginResponse
+import com.example.bazaar.api.types.Reponse.ProductsListResponse
 import com.example.bazaar.api.types.Reponse.RegisterResponse
 import com.example.bazaar.api.types.Request.ForgotPasswordRequest
 import com.example.bazaar.api.types.Request.LoginRequest
@@ -21,6 +22,9 @@ interface MarketPlaceApiService {
 
     @POST(BackendConstants.FORGOT_URL)
     suspend fun forgotPassword(@Body request: ForgotPasswordRequest) :ForgotPasswordResponse
+
+    @GET(BackendConstants.GET_PRODUCT_URL)
+    suspend fun getProducts(@Header(BackendConstants.HEADER_TOKEN) token: String): ProductsListResponse
 /*
     @GET(BackendConstants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header(BackendConstants.HEADER_TOKEN) token: String): ProductsListResponse

@@ -1,5 +1,6 @@
 package com.example.bazaar.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -24,7 +25,7 @@ class Register : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = RegisterViewModelFactory(MarketPlaceRepository())
+        val factory = this.context?.let { RegisterViewModelFactory(MarketPlaceRepository(), it) }
         registerViewModel = ViewModelProvider(this,factory).get(RegisterViewModel::class.java)
     }
 
