@@ -66,7 +66,5 @@ class Register : Fragment() {
                 this.findNavController().navigate(RegisterDirections.actionRegisterToLogin())
             }
         }
-
-
     }
 }

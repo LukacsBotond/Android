@@ -1,4 +1,4 @@
-package com.example.bazaar
+package com.example.bazaar.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,9 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
+import com.example.bazaar.R
 import com.example.bazaar.api.MarketPlaceRepository
 import com.example.bazaar.viewModel.LoginViewModel
 import com.example.bazaar.viewModel.LoginViewModelFactory
@@ -18,14 +20,14 @@ import com.example.bazaar.viewModel.LoginViewModelFactory
 
 class Login : Fragment() {
 
-    val TAG: String = javaClass.simpleName
+    private val TAG: String = javaClass.simpleName
 
     private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val factory = LoginViewModelFactory(MarketPlaceRepository())
-        loginViewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
+        loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -55,7 +57,7 @@ class Login : Fragment() {
             loginViewModel.login()
 
             loginViewModel.isSuccessful.observe(this.viewLifecycleOwner) {
-                Log.d(TAG, "Logged in successfully = " + it)
+                Log.d(TAG, "Logged in successfully = $it")
                 this.findNavController().navigate(LoginDirections.actionLoginToTimeline())
             }
         }

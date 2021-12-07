@@ -11,6 +11,8 @@ object BackendConstants {
      */
     const val LOGIN_URL = "user/login"
     const val REGISTER_URL = "user/register"
+    const val FORGOT_URL = "/user/reset"
+
     const val GET_PRODUCT_URL = "products"
 
     /**

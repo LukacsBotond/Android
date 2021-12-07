@@ -37,8 +37,9 @@ class RegisterViewModel(private val repository: MarketPlaceRepository) : ViewMod
                 repository.register(request)
             }
             token.value = result.message
-
+            isSuccessful.value = true
         }catch(e: Exception){
+            isSuccessful.value = false
             Log.d(TAG,"RegisterViewModel-register() failed with exception: ${e.message}")
             //Toast.makeText(this,"RegisterViewModel-register() failed with exception:",Toast.LENGTH_SHORT).show()
         }
