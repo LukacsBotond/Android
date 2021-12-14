@@ -65,7 +65,5 @@ class Login : Fragment() {
         SignUpButton.setOnClickListener{
             this.findNavController().navigate(LoginDirections.actionLoginToRegister())
         }
-
-
     }
 }
