@@ -25,8 +25,8 @@ class Register : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val factory = this.context?.let { RegisterViewModelFactory(MarketPlaceRepository(), it) }
-        registerViewModel = ViewModelProvider(this,factory).get(RegisterViewModel::class.java)
+        val factory = RegisterViewModelFactory(MarketPlaceRepository())
+        registerViewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
     }
 
     override fun onCreateView(

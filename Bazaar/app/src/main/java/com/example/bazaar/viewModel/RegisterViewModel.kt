@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RegisterViewModel(private val repository: MarketPlaceRepository,context: Context) : ViewModel() {
+class RegisterViewModel(private val repository: MarketPlaceRepository) : ViewModel() {
     val TAG: String = javaClass.simpleName
 
     lateinit var username: String
@@ -42,7 +42,7 @@ class RegisterViewModel(private val repository: MarketPlaceRepository,context: C
         }catch(e: Exception){
             isSuccessful.value = false
             Log.d(TAG,"RegisterViewModel-register() failed with exception: ${e.message}")
-            Toast.makeText(context,"RegisterViewModel-register() failed with exception:",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context,"RegisterViewModel-register() failed with exception:",Toast.LENGTH_SHORT).show()
         }
     }
 

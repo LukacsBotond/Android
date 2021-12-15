@@ -37,6 +37,8 @@ class LoginViewModel (private val repository: MarketPlaceRepository) : ViewModel
             }
             token.value = result.token
             App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN, result.token)
+            App.sharedPreferences.putStringValue(SharedPreferencesManager.CREATE_TIME_TOKEN,result.creation_time.toString())
+            App.sharedPreferences.putStringValue(SharedPreferencesManager.TIMEOUT_TOKEN, result.refresh_time.toString())
             isSuccessful.value = true
             Log.d(TAG, "LoginViewModel - login response: $result")
         } catch (e: Exception) {

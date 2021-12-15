@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.api.MarketPlaceRepository
 
-class RegisterViewModelFactory(private val repository: MarketPlaceRepository,context: Context) : ViewModelProvider.Factory {
+class RegisterViewModelFactory(private val repository: MarketPlaceRepository) : ViewModelProvider.Factory {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>, context: Context): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return RegisterViewModel(repository) as T
     }
 }

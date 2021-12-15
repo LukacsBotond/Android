@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_startLoading_to_login"
             app:destination="@id/login" />
+        <action
+            android:id="@+id/action_startLoading_to_timeline"
+            app:destination="@id/timeline" />
     </fragment>
     <fragment
         android:id="@+id/register"

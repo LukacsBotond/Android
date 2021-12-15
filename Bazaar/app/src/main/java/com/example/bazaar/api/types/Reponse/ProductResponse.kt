@@ -1,7 +1,10 @@
 package com.example.bazaar.api.types.Reponse
 
+import android.media.Image
+import com.google.gson.annotations.SerializedName
+
 data class ProductResponse(
-    @Ser
+    @SerializedName("rating")
     var rating: Double,
 
     @SerializedName("ammount_type")

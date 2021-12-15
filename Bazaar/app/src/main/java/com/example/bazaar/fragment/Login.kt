@@ -58,7 +58,9 @@ class Login : Fragment() {
 
             loginViewModel.isSuccessful.observe(this.viewLifecycleOwner) {
                 Log.d(TAG, "Logged in successfully = $it")
-                this.findNavController().navigate(LoginDirections.actionLoginToTimeline())
+                if(it == true) {
+                    this.findNavController().navigate(LoginDirections.actionLoginToTimeline())
+                }
             }
         }
 
