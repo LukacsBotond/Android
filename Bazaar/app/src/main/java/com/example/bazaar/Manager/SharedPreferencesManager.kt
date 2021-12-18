@@ -11,6 +11,7 @@ class SharedPreferencesManager(context: Context) {
         const val KEY_TOKEN = "SHARED_PREFERENCES_KEY_TOKEN"
         const val CREATE_TIME_TOKEN = "SHARED_PREFERENCES_CREATE_TIME_TOKEN"
         const val TIMEOUT_TOKEN = "SHARED_PREFERENCES_TIMEOUT_TOKEN"
+        const val USERNAME_TOKEN = "SHARED_PREFERENCES_USERNAME_TOKEN"
     }
 
     fun putStringValue(key: String, value: String) {

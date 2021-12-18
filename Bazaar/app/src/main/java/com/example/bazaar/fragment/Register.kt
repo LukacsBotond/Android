@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.bazaar.R
 import com.example.bazaar.api.MarketPlaceRepository
+import com.example.bazaar.bottomNav
 import com.example.bazaar.viewModel.LoginViewModel
 import com.example.bazaar.viewModel.RegisterViewModel
 import com.example.bazaar.viewModel.RegisterViewModelFactory
@@ -25,6 +26,7 @@ class Register : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        bottomNav.visibility = View.INVISIBLE
         val factory = RegisterViewModelFactory(MarketPlaceRepository())
         registerViewModel = ViewModelProvider(this, factory)[RegisterViewModel::class.java]
     }

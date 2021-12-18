@@ -14,6 +14,7 @@ import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
 import com.example.bazaar.R
 import com.example.bazaar.api.MarketPlaceRepository
+import com.example.bazaar.bottomNav
 import com.example.bazaar.viewModel.LoginViewModel
 import com.example.bazaar.viewModel.LoginViewModelFactory
 
@@ -26,6 +27,7 @@ class Login : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        bottomNav.visibility = View.INVISIBLE
         val factory = LoginViewModelFactory(MarketPlaceRepository())
         loginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
     }

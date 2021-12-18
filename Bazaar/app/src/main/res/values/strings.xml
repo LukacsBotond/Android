@@ -16,4 +16,7 @@
     <string name="price">Price</string>
     <string name="title">title</string>
     <string name="status">status</string>
+    <string name="profile">Profile</string>
+    <string name="timeline">Timeline</string>
+    <string name="mymarket">myMarket</string>
 </resources>

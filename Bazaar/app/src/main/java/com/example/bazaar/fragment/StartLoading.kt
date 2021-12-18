@@ -14,18 +14,21 @@ import androidx.navigation.fragment.findNavController
 import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
 import com.example.bazaar.R
+import com.example.bazaar.bottomNav
 
 class StartLoading : Fragment() {
     private val TAG: String = javaClass.simpleName
     private lateinit var spinner: ProgressBar
     private var needsLogin = true
-    private var noToken = true
+    private var noToken = false
+    private var noName = false
     var token: MutableLiveData<String> = MutableLiveData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        bottomNav.visibility = View.INVISIBLE
         // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_start_loading, container, false)
@@ -38,17 +41,22 @@ class StartLoading : Fragment() {
             var timeInt:Long = 0
             var timeOutInt:Long = 0
             val currentTime = System.currentTimeMillis()
+            val username = App.sharedPreferences.getStringValue(SharedPreferencesManager.USERNAME_TOKEN, "0")
             val tokenRead = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0")
             var cTime = App.sharedPreferences.getStringValue(SharedPreferencesManager.CREATE_TIME_TOKEN, "0")
             var rTime = App.sharedPreferences.getStringValue(SharedPreferencesManager.TIMEOUT_TOKEN, "0")
+            //TOKEN
             if(tokenRead != "0"){
                 token.value = tokenRead
-                noToken = false
+                noToken = true
                 Log.d(TAG, "token = ${token.value}")
             }
-            else{
-                noToken = true
+            //username Check
+            if(username == "0"){
+                noName = true
             }
+
+            //TIMESTAMP checks
             if (cTime == null)
                 cTime = "0"
             if (rTime == null)
@@ -65,7 +73,6 @@ class StartLoading : Fragment() {
             }
 
             //new phone
-
             if (timeInt == 0.toLong() || timeOutInt == 0.toLong()){
                 needsLogin =  true
             }else{
@@ -76,7 +83,7 @@ class StartLoading : Fragment() {
             Log.d(TAG, "currentTime  = $currentTime")
             Log.d(TAG, "expire Token = ${timeInt+timeOutInt}")
             Log.d(TAG, "NeedsLogin   = $needsLogin")
-            if(needsLogin || noToken){
+            if(needsLogin || !noToken || !noName){
                 this.findNavController()
                     .navigate(StartLoadingDirections.actionStartLoadingToLogin())
             }

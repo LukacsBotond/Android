@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.bazaar.R
 import com.example.bazaar.api.MarketPlaceRepository
+import com.example.bazaar.bottomNav
 import com.example.bazaar.viewModel.ForgotPasswordViewModel
 import com.example.bazaar.viewModel.ForgotPasswordViewModelFactory
 
@@ -18,6 +19,7 @@ class ForgotPassword : Fragment() {
     private lateinit var forgotViewModel: ForgotPasswordViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        bottomNav.visibility = View.INVISIBLE
         val factory = ForgotPasswordViewModelFactory(MarketPlaceRepository())
         forgotViewModel = ViewModelProvider(this, factory)[ForgotPasswordViewModel::class.java]
     }

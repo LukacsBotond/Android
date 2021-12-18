@@ -1,14 +1,18 @@
 package com.example.bazaar.viewModel
 
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
+import com.example.bazaar.R
 import com.example.bazaar.api.MarketPlaceRepository
 import com.example.bazaar.api.types.Reponse.ProductResponse
 import com.example.bazaar.api.types.Request.GetProductsRequest
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

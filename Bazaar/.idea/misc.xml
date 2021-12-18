@@ -15,8 +15,14 @@
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Bazaar/app/src/main/res/layout/fragment_start_loading.xml" value="0.25" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Bazaar/app/src/main/res/layout/fragment_start_screen.xml" value="0.3625" />
         <entry key="..\:/Users/Botond/AndroidStudioProjects/git/Bazaar/app/src/main/res/layout/fragment_timeline.xml" value="0.3625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10005065856129686" />
+        <entry key="app/src/main/res/layout/fragment_frogot_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_start_loading.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/fragment_start_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_timeline.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_timeline_products.xml" value="0.5" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.33" />
       </map>
     </option>
   </component>

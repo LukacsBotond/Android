@@ -59,7 +59,11 @@ class DataAdapter(
         holder.titleTextView.text = currentItem.title
         if(currentItem.isActive) holder.statusTextView.text = "Active"
         else holder.statusTextView.text = "Inactive"
-        holder.priceTextView.text = currentItem.price_per_unit
+
+        var amountType :String =""
+        if(currentItem.ammountType != null)  amountType = currentItem.ammountType
+        val priceText = currentItem.price_per_unit + amountType + "/" + currentItem.priceType
+        holder.priceTextView.text = priceText
         ++counter_bind
         Log.d("xxx", "onBindViewHolder: $counter_bind")
     }

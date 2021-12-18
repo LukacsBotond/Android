@@ -18,6 +18,7 @@ class StartScreen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        //bottomNav.visibility = View.INVISIBLE
         return inflater.inflate(R.layout.fragment_start_screen, container, false)
     }
 
