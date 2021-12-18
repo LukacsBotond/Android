@@ -18,6 +18,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10005065856129686" />
         <entry key="app/src/main/res/layout/fragment_frogot_password.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.17806484295845998" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.17806484295845998" />
         <entry key="app/src/main/res/layout/fragment_start_loading.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_start_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_timeline.xml" value="0.25" />

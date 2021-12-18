@@ -56,4 +56,12 @@
             android:id="@+id/action_register_to_login"
             app:destination="@id/login" />
     </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.bazaar.fragment.Profile"
+        android:label="fragment_profile" />
+    <fragment
+        android:id="@+id/orders"
+        android:name="com.example.bazaar.Orders"
+        android:label="Orders" />
 </navigation>

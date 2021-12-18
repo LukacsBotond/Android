@@ -20,8 +20,8 @@ class StartLoading : Fragment() {
     private val TAG: String = javaClass.simpleName
     private lateinit var spinner: ProgressBar
     private var needsLogin = true
-    private var noToken = false
-    private var noName = false
+    private var noToken = true
+    private var noName = true
     var token: MutableLiveData<String> = MutableLiveData()
 
     override fun onCreateView(
@@ -48,12 +48,12 @@ class StartLoading : Fragment() {
             //TOKEN
             if(tokenRead != "0"){
                 token.value = tokenRead
-                noToken = true
+                noToken = false
                 Log.d(TAG, "token = ${token.value}")
             }
             //username Check
-            if(username == "0"){
-                noName = true
+            if(username != "0"){
+                noName = false
             }
 
             //TIMESTAMP checks
@@ -83,7 +83,9 @@ class StartLoading : Fragment() {
             Log.d(TAG, "currentTime  = $currentTime")
             Log.d(TAG, "expire Token = ${timeInt+timeOutInt}")
             Log.d(TAG, "NeedsLogin   = $needsLogin")
-            if(needsLogin || !noToken || !noName){
+            Log.d(TAG, "NoToken   = $noToken")
+            Log.d(TAG, "NoName   = $noName")
+            if(needsLogin || noToken || noName){
                 this.findNavController()
                     .navigate(StartLoadingDirections.actionStartLoadingToLogin())
             }
