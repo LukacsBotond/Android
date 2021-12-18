@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/Timeline_product_image_view"
+        android:layout_width="83dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@android:drawable/btn_star" />
+
+    <TextView
+        android:id="@+id/Timeline_product_username"
+        android:layout_width="277dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/username"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Timeline_product_image_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Timeline_product_title"
+        android:layout_width="277dp"
+        android:layout_height="23dp"
+        android:text="@string/title"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Timeline_product_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/Timeline_product_username" />
+
+    <TextView
+        android:id="@+id/Timeline_product_status"
+        android:layout_width="277dp"
+        android:layout_height="23dp"
+        android:text="@string/status"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Timeline_product_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/Timeline_product_title"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/Timeline_product_Price"
+        android:layout_width="119dp"
+        android:layout_height="16dp"
+        android:text="@string/price"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Timeline_product_image_view"
+        app:layout_constraintVertical_bias="0.666" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

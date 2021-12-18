@@ -39,4 +39,8 @@ data class ProductResponse(
 
     @SerializedName("creation_type")
     var creationTime: Int,
-)
+){
+    override fun toString(): String {
+        return "Product (username = $username, title = $title, price per unit = $price_per_unit)"
+    }
+}

@@ -37,7 +37,7 @@
         tools:layout="@layout/fragment_timeline" />
     <fragment
         android:id="@+id/startLoading"
-        android:name="com.example.bazaar.StartLoading"
+        android:name="com.example.bazaar.fragment.StartLoading"
         android:label="fragment_start_loading"
         tools:layout="@layout/fragment_start_loading" >
         <action
