@@ -35,6 +35,8 @@ class ProfileView(private val repository: MarketPlaceRepository) : ViewModel(){
             val result = withContext(Dispatchers.IO) {
                 repository.getProfile(requestBody)
             }
+            Log.d(TAG, "Profile = ${result.data[0]} ${result.data.size}")
+            //Log.d(TAG, "Profile = ${result.data[1]}")
             userData.value = result.data[0]
             isSuccessful.value = true
             Log.d(TAG, "ProfileViewModel - profile response: ${result.data[0]}")

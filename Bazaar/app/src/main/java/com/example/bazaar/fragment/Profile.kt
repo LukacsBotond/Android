@@ -2,11 +2,11 @@ package com.example.bazaar.fragment
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,28 +17,17 @@ import com.example.bazaar.Support.TimeStampChecker
 import com.example.bazaar.api.MarketPlaceRepository
 import com.example.bazaar.api.types.Reponse.ProfileDataResponse
 import com.example.bazaar.bottomNav
-import com.example.bazaar.viewModel.LoginViewModel
-import com.example.bazaar.viewModel.LoginViewModelFactory
 import com.example.bazaar.viewModel.ProfileView
 import com.example.bazaar.viewModel.ProfileViewFactory
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Profile.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Profile : Fragment() {
     private val TAG: String = javaClass.simpleName
-    var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
+    //var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
 
     private lateinit var profileViewModel: ProfileView
     //user data
-    var userData: MutableLiveData<ProfileDataResponse> = MutableLiveData()
+    private var userData: MutableLiveData<ProfileDataResponse> = MutableLiveData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,11 +48,6 @@ class Profile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "Profile select")
         val username = App.sharedPreferences.getStringValue(SharedPreferencesManager.USERNAME_TOKEN, "0")
-        val usernameTextView:TextureView = view.findViewById(R.id.Profile_view_username)
-        val phoneTextView:TextureView = view.findViewById(R.id.Profile_view_phone_number)
-        val emailTextView:TextureView = view.findViewById(R.id.Profile_view_email)
-        val activatedTextView:TextureView = view.findViewById(R.id.Profile_view_activated)
-        val creationTimeTextView:TextureView = view.findViewById(R.id.Profile_view_Creation_time)
         //timestamp expired?
         val timeStampChecker = TimeStampChecker()
         if(!timeStampChecker.check()) {
@@ -81,9 +65,8 @@ class Profile : Fragment() {
             profileViewModel.isSuccessful.observe(this.viewLifecycleOwner){
                 Log.d(TAG, "Got profile successfully = $it")
                 if(it == true){
-                    userData.observe(this.viewLifecycleOwner){
-                        Log.d(TAG, "Profile = ${userData.value}")
-
+                    profileViewModel.userData.observe(this.viewLifecycleOwner){
+                        setProfileData(view,it)
                     }
                 }
             }
@@ -93,6 +76,31 @@ class Profile : Fragment() {
                 .navigate(ProfileDirections.actionProfileToLogin())
         }
     }
+
+    private fun setProfileData(view: View,profileDataResponse: ProfileDataResponse){
+        Log.d(TAG, "Set Profile")
+        val usernameTextView: TextView = view.findViewById(R.id.Profile_view_username)
+        val phoneTextView:TextView = view.findViewById(R.id.Profile_view_phone_number)
+        val emailTextView:TextView = view.findViewById(R.id.Profile_view_email)
+        val activatedTextView:TextView = view.findViewById(R.id.Profile_view_activated)
+        val creationTimeTextView:TextView = view.findViewById(R.id.Profile_view_Creation_time)
+
+        usernameTextView.text = profileDataResponse.username
+        phoneTextView.text = profileDataResponse.phone_number
+        emailTextView.text = profileDataResponse.email
+        activatedTextView.text = profileDataResponse.is_activated
+        creationTimeTextView.text = getDateTimeFromEpocLongOfSeconds(profileDataResponse.creation_time)
+    }
+
+    private fun getDateTimeFromEpocLongOfSeconds(epoc: Long): String {
+        return try {
+            val netDate = Date(epoc)
+            netDate.toString()
+        } catch (e: Exception) {
+            e.toString()
+        }
+    }
+
 /*
     companion object {
         /**

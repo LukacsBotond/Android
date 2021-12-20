@@ -21,4 +21,5 @@
     <string name="mymarket">myMarket</string>
     <string name="activated">activated</string>
     <string name="creation_time">Creation Time</string>
+    <string name="phone_number">phone number</string>
 </resources>
