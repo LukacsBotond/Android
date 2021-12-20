@@ -1,14 +1,8 @@
 package com.example.bazaar.api
 
 import android.util.Log
-import com.example.bazaar.api.types.Reponse.ForgotPasswordResponse
-import com.example.bazaar.api.types.Reponse.LoginResponse
-import com.example.bazaar.api.types.Reponse.ProductsListResponse
-import com.example.bazaar.api.types.Reponse.RegisterResponse
-import com.example.bazaar.api.types.Request.ForgotPasswordRequest
-import com.example.bazaar.api.types.Request.GetProductsRequest
-import com.example.bazaar.api.types.Request.LoginRequest
-import com.example.bazaar.api.types.Request.RegisterRequest
+import com.example.bazaar.api.types.Reponse.*
+import com.example.bazaar.api.types.Request.*
 
 class MarketPlaceRepository {
     val TAG: String = javaClass.simpleName
@@ -25,8 +19,12 @@ class MarketPlaceRepository {
     }
 
     suspend fun getProducts(getProductsRequest: GetProductsRequest): ProductsListResponse {
-        Log.d(TAG, "token = ${getProductsRequest.token}")
         return RetrofitInstance.marketPlaceApiService.getProducts(getProductsRequest.token)
     }
+
+    suspend fun getProfile(getProfileRequest: GetProfileRequest): ProfileResponse {
+        return RetrofitInstance.marketPlaceApiService.getProfile(getProfileRequest.username)
+    }
+
 
 }

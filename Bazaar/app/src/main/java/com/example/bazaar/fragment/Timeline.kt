@@ -18,6 +18,8 @@ import com.example.bazaar.api.MarketPlaceRepository
 import com.example.bazaar.viewModel.TimelineView
 import com.example.bazaar.viewModel.TimelineViewFactory
 import com.example.bazaar.RecycleView.DataAdapter.OnItemClickListener
+import com.example.bazaar.Support.TimeStampChecker
+import com.example.bazaar.fragment.ProfileDirections
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Timeline : Fragment(), OnItemClickListener {
@@ -30,6 +32,13 @@ class Timeline : Fragment(), OnItemClickListener {
         val factory = TimelineViewFactory(MarketPlaceRepository())
         timelineView = ViewModelProvider(this,factory)[TimelineView::class.java]
         bottomNav.visibility = View.VISIBLE
+
+        val timeStampChecker = TimeStampChecker()
+        if(!timeStampChecker.check()){
+            this.findNavController()
+                .navigate(ProfileDirections.actionProfileToLogin())
+        }
+
     /*
         val bottomNav = view?.findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         if (bottomNav != null) {

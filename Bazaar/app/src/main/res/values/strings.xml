@@ -19,4 +19,6 @@
     <string name="profile">Profile</string>
     <string name="timeline">Timeline</string>
     <string name="mymarket">myMarket</string>
+    <string name="activated">activated</string>
+    <string name="creation_time">Creation Time</string>
 </resources>

@@ -1,9 +1,6 @@
 package com.example.bazaar.api
 
-import com.example.bazaar.api.types.Reponse.ForgotPasswordResponse
-import com.example.bazaar.api.types.Reponse.LoginResponse
-import com.example.bazaar.api.types.Reponse.ProductsListResponse
-import com.example.bazaar.api.types.Reponse.RegisterResponse
+import com.example.bazaar.api.types.Reponse.*
 import com.example.bazaar.api.types.Request.ForgotPasswordRequest
 import com.example.bazaar.api.types.Request.LoginRequest
 import com.example.bazaar.api.types.Request.RegisterRequest
@@ -25,9 +22,8 @@ interface MarketPlaceApiService {
 
     @GET(BackendConstants.GET_PRODUCT_URL)
     suspend fun getProducts(@Header(BackendConstants.HEADER_TOKEN) token: String): ProductsListResponse
-/*
-    @GET(BackendConstants.GET_PRODUCT_URL)
-    suspend fun getProducts(@Header(BackendConstants.HEADER_TOKEN) token: String): ProductsListResponse
 
- */
+    @GET(BackendConstants.GET_PROFILE_URL)
+    suspend fun getProfile(@Header(BackendConstants.HEADER_USERNAME) username: String): ProfileResponse
+
 }

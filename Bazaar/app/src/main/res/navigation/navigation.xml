@@ -34,7 +34,11 @@
         android:id="@+id/timeline"
         android:name="com.example.bazaar.Timeline"
         android:label="fragment_timeline"
-        tools:layout="@layout/fragment_timeline" />
+        tools:layout="@layout/fragment_timeline" >
+        <action
+            android:id="@+id/action_timeline_to_login"
+            app:destination="@id/login" />
+    </fragment>
     <fragment
         android:id="@+id/startLoading"
         android:name="com.example.bazaar.fragment.StartLoading"
@@ -59,9 +63,21 @@
     <fragment
         android:id="@+id/profile"
         android:name="com.example.bazaar.fragment.Profile"
-        android:label="fragment_profile" />
+        android:label="fragment_profile" >
+        <action
+            android:id="@+id/action_profile_to_profileEdit"
+            app:destination="@id/profileEdit" />
+        <action
+            android:id="@+id/action_profile_to_login"
+            app:destination="@id/login" />
+    </fragment>
     <fragment
         android:id="@+id/orders"
         android:name="com.example.bazaar.Orders"
         android:label="Orders" />
+    <fragment
+        android:id="@+id/profileEdit"
+        android:name="com.example.bazaar.fragment.ProfileEdit"
+        android:label="fragment_profile_edit"
+        tools:layout="@layout/fragment_profile_edit" />
 </navigation>

@@ -7,14 +7,59 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/Profile_view_username"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:label="@string/username"
+        android:text="@string/username"
+        app:layout_constraintBottom_toTopOf="@+id/Profile_view_phone_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:id="@+id/Profile_view_phone_number"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="45dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/Profile_view_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Profile_view_email"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/e_mail"
+        app:layout_constraintBottom_toTopOf="@+id/Profile_view_activated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Profile_view_activated"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/activated"
+        app:layout_constraintBottom_toTopOf="@+id/Profile_view_Creation_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Profile_view_Creation_time"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/creation_time"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

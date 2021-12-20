@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
 import com.example.bazaar.R
+import com.example.bazaar.Support.TimeStampChecker
 import com.example.bazaar.bottomNav
 
 class StartLoading : Fragment() {
@@ -35,16 +36,16 @@ class StartLoading : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("mainActivity", "Bazaar start")
+        Log.d(TAG, "Bazaar start")
         Handler(Looper.getMainLooper()).postDelayed({
 
-            var timeInt:Long = 0
-            var timeOutInt:Long = 0
-            val currentTime = System.currentTimeMillis()
+            //var timeInt:Long = 0
+            //var timeOutInt:Long = 0
+            //val currentTime = System.currentTimeMillis()
             val username = App.sharedPreferences.getStringValue(SharedPreferencesManager.USERNAME_TOKEN, "0")
             val tokenRead = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0")
-            var cTime = App.sharedPreferences.getStringValue(SharedPreferencesManager.CREATE_TIME_TOKEN, "0")
-            var rTime = App.sharedPreferences.getStringValue(SharedPreferencesManager.TIMEOUT_TOKEN, "0")
+            //var cTime = App.sharedPreferences.getStringValue(SharedPreferencesManager.CREATE_TIME_TOKEN, "0")
+            //var rTime = App.sharedPreferences.getStringValue(SharedPreferencesManager.TIMEOUT_TOKEN, "0")
             //TOKEN
             if(tokenRead != "0"){
                 token.value = tokenRead
@@ -56,35 +57,15 @@ class StartLoading : Fragment() {
                 noName = false
             }
 
-            //TIMESTAMP checks
-            if (cTime == null)
-                cTime = "0"
-            if (rTime == null)
-                rTime = "0"
-            try {
-                timeInt = cTime.toLong()
-            } catch (nfe: NumberFormatException) {
-                needsLogin = true
-            }
-            try {
-                timeOutInt = rTime.toLong()
-            } catch (nfe: NumberFormatException) {
-                needsLogin = true
-            }
-
-            //new phone
-            if (timeInt == 0.toLong() || timeOutInt == 0.toLong()){
-                needsLogin =  true
-            }else{
-                needsLogin = timeInt + timeOutInt <= currentTime
-            }
-            Log.d(TAG, "timestamp    = $timeInt")
-            Log.d(TAG, "refrest      = $timeOutInt")
-            Log.d(TAG, "currentTime  = $currentTime")
-            Log.d(TAG, "expire Token = ${timeInt+timeOutInt}")
+            val timeStampChecker = TimeStampChecker()
+            needsLogin = timeStampChecker.check()
+            //invert it
+            needsLogin = !needsLogin
             Log.d(TAG, "NeedsLogin   = $needsLogin")
             Log.d(TAG, "NoToken   = $noToken")
             Log.d(TAG, "NoName   = $noName")
+
+
             if(needsLogin || noToken || noName){
                 this.findNavController()
                     .navigate(StartLoadingDirections.actionStartLoadingToLogin())
