@@ -1,10 +1,7 @@
 package com.example.bazaar.api
 
 import com.example.bazaar.api.types.Reponse.*
-import com.example.bazaar.api.types.Request.ForgotPasswordRequest
-import com.example.bazaar.api.types.Request.LoginRequest
-import com.example.bazaar.api.types.Request.RegisterRequest
-import com.example.bazaar.api.types.Request.UpdateProfileRequest
+import com.example.bazaar.api.types.Request.*
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -22,7 +19,7 @@ interface MarketPlaceApiService {
     suspend fun forgotPassword(@Body request: ForgotPasswordRequest) :ForgotPasswordResponse
 
     @GET(BackendConstants.GET_PRODUCT_URL)
-    suspend fun getProducts(@Header(BackendConstants.HEADER_TOKEN) token: String): ProductsListResponse
+    suspend fun getProducts(@Header(BackendConstants.HEADER_TOKEN) token: String, @Header(BackendConstants.HEADER_LIMIT) limit:Int, @Header(BackendConstants.HEADER_FILTER) filter:String): ProductsListResponse
 
     @GET(BackendConstants.GET_PROFILE_URL)
     suspend fun getProfile(@Header(BackendConstants.HEADER_USERNAME) username: String): ProfileResponse

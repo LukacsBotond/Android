@@ -72,10 +72,6 @@
             app:destination="@id/login" />
     </fragment>
     <fragment
-        android:id="@+id/orders"
-        android:name="com.example.bazaar.Orders"
-        android:label="Orders" />
-    <fragment
         android:id="@+id/profileEdit"
         android:name="com.example.bazaar.fragment.ProfileEdit"
         android:label="fragment_profile_edit"
@@ -86,4 +82,8 @@
             android:id="@+id/action_profileEdit_to_timeline"
             app:destination="@id/timeline" />
     </fragment>
+    <fragment
+        android:id="@+id/myProducts"
+        android:name="com.example.bazaar.fragment.MyProducts"
+        android:label="MyProducts" />
 </navigation>

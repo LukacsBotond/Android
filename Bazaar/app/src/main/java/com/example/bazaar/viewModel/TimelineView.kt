@@ -22,12 +22,13 @@ class TimelineView (private val repository: MarketPlaceRepository) : ViewModel()
     var list: MutableList<ProductResponse> = mutableListOf()
     var token: MutableLiveData<String> = MutableLiveData()
     var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
-
+    var filter:String = ""
     //var list: MutableList<ProductResponse> = generateList().toMutableList()
     var currentPosition: Int = 0
 
     init {
-        getProducts()
+        list.clear()
+        //getProducts()
     }
 
     fun addItem(item: ProductResponse) {
@@ -39,13 +40,14 @@ class TimelineView (private val repository: MarketPlaceRepository) : ViewModel()
     }
 
     fun getProducts(){
-        val tokenRead = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0")
-        if (tokenRead == "0" || tokenRead == null){
+        list.clear()
+        token.value = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0")
+        if (token.value == "0" || token.value == null){
             Log.d(TAG, "NO TOKEN")
             list.clear()
         }
         else{
-            val requestBody = GetProductsRequest(tokenRead,50)
+            val requestBody = GetProductsRequest(500, filter)
             viewModelScope.launch {
                 executeGetProducts(requestBody)
             }
@@ -55,15 +57,20 @@ class TimelineView (private val repository: MarketPlaceRepository) : ViewModel()
 
     private suspend fun executeGetProducts(requestBody: GetProductsRequest) {
         try {
+            Log.d(TAG, "requestbody: $requestBody")
             val result = withContext(Dispatchers.IO) {
-                Log.d(TAG, "TOKEN: ${requestBody.token}")
-                repository.getProducts(requestBody)
+                Log.d(TAG, "TOKEN: ${token.value}")
+                token.value?.let { repository.getProducts(it, requestBody) }
             }
             //TODO fix everything
-            Log.d(TAG, "items: ${result.itemCount}")
-            Log.d(TAG, "items: ${result.timeStamp}")
-            result.products.forEach{
-                Log.d(TAG, "items: ${it.toString()}")
+            if (result != null) {
+                Log.d(TAG, "items: ${result.itemCount}")
+            }
+            if (result != null) {
+                Log.d(TAG, "items: ${result.timeStamp}")
+            }
+            result?.products?.forEach{
+                Log.d(TAG, "items: $it")
                 list.add(it)
             }
             isSuccessful.value = true
@@ -73,6 +80,4 @@ class TimelineView (private val repository: MarketPlaceRepository) : ViewModel()
             isSuccessful.value = false
         }
     }
-
-
 }

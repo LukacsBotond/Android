@@ -18,8 +18,8 @@ class MarketPlaceRepository {
         return RetrofitInstance.marketPlaceApiService.forgotPassword(forgotPasswordRequest)
     }
 
-    suspend fun getProducts(getProductsRequest: GetProductsRequest): ProductsListResponse {
-        return RetrofitInstance.marketPlaceApiService.getProducts(getProductsRequest.token)
+    suspend fun getProducts(token: String,getProductsRequest: GetProductsRequest): ProductsListResponse {
+        return RetrofitInstance.marketPlaceApiService.getProducts(token,getProductsRequest.limit,getProductsRequest.filter)
     }
 
     suspend fun getProfile(getProfileRequest: GetProfileRequest): ProfileResponse {

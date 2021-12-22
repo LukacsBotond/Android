@@ -21,5 +21,6 @@ object BackendConstants {
      */
     const val HEADER_TOKEN = "token"
     const val HEADER_USERNAME = "username"
-
+    const val HEADER_LIMIT = "limit"
+    const val HEADER_FILTER = "filter"
 }

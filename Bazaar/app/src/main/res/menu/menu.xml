@@ -15,9 +15,9 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/orders"
+        android:id="@+id/myProducts"
         android:icon="@android:drawable/ic_menu_info_details"
         android:orderInCategory="3"
-        android:title="@string/mymarket"
+        android:title="@string/myproducts"
         app:showAsAction="ifRoom" />
 </menu>
