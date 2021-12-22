@@ -1,5 +1,6 @@
 package com.example.bazaar.api.types.Reponse
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class ProfileDataResponse(

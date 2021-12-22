@@ -79,5 +79,8 @@
         android:id="@+id/profileEdit"
         android:name="com.example.bazaar.fragment.ProfileEdit"
         android:label="fragment_profile_edit"
-        tools:layout="@layout/fragment_profile_edit" />
+        tools:layout="@layout/fragment_profile_edit" >
+        <argument android:name="profileData"
+            app:argType="com.example.bazaar.Support.ProfileData" />
+    </fragment>
 </navigation>

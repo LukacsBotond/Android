@@ -13,7 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
 import com.example.bazaar.R
+import com.example.bazaar.Support.ProfileData
 import com.example.bazaar.Support.TimeStampChecker
+import com.example.bazaar.Support.TimestamptoDate
 import com.example.bazaar.api.MarketPlaceRepository
 import com.example.bazaar.api.types.Reponse.ProfileDataResponse
 import com.example.bazaar.bottomNav
@@ -65,8 +67,14 @@ class Profile : Fragment() {
             profileViewModel.isSuccessful.observe(this.viewLifecycleOwner){
                 Log.d(TAG, "Got profile successfully = $it")
                 if(it == true){
-                    profileViewModel.userData.observe(this.viewLifecycleOwner){
-                        setProfileData(view,it)
+                    profileViewModel.userData.observe(this.viewLifecycleOwner){ it1->
+                        if(username == it1.username){
+                            val profileData =  ProfileData(it1.username,it1.phone_number,it1.email,it1.is_activated,it1.creation_time)
+                            //val action = ProfileDirections.actionProfileToProfileEdit(it1)
+                            this.findNavController()
+                                .navigate(ProfileDirections.actionProfileToProfileEdit(profileData))
+                        }
+                        setProfileData(view,it1)
                     }
                 }
             }
@@ -84,22 +92,16 @@ class Profile : Fragment() {
         val emailTextView:TextView = view.findViewById(R.id.Profile_view_email)
         val activatedTextView:TextView = view.findViewById(R.id.Profile_view_activated)
         val creationTimeTextView:TextView = view.findViewById(R.id.Profile_view_Creation_time)
+        val timestampcnv = TimestamptoDate()
 
         usernameTextView.text = profileDataResponse.username
         phoneTextView.text = profileDataResponse.phone_number
         emailTextView.text = profileDataResponse.email
         activatedTextView.text = profileDataResponse.is_activated
-        creationTimeTextView.text = getDateTimeFromEpocLongOfSeconds(profileDataResponse.creation_time)
+        creationTimeTextView.text = timestampcnv.getDateTimeFromEpocLongOfSeconds(profileDataResponse.creation_time)
     }
 
-    private fun getDateTimeFromEpocLongOfSeconds(epoc: Long): String {
-        return try {
-            val netDate = Date(epoc)
-            netDate.toString()
-        } catch (e: Exception) {
-            e.toString()
-        }
-    }
+
 
 /*
     companion object {
