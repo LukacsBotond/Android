@@ -26,5 +26,9 @@ class MarketPlaceRepository {
         return RetrofitInstance.marketPlaceApiService.getProfile(getProfileRequest.username)
     }
 
+    suspend fun UpdateProfile(token : String,updateProfileRequest: UpdateProfileRequest): UpdatedProfileResponse {
+        return RetrofitInstance.marketPlaceApiService.updateProfile(token,updateProfileRequest)
+    }
+
 
 }

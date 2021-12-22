@@ -8,14 +8,16 @@ import com.example.bazaar.App
 import com.example.bazaar.Manager.SharedPreferencesManager
 import com.example.bazaar.api.MarketPlaceRepository
 import com.example.bazaar.api.types.Reponse.ProfileDataResponse
+import com.example.bazaar.api.types.Request.GetProductsRequest
 import com.example.bazaar.api.types.Request.GetProfileRequest
 import com.example.bazaar.api.types.Request.LoginRequest
+import com.example.bazaar.api.types.Request.UpdateProfileRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ProfileEditView(private val repository: MarketPlaceRepository) : ViewModel(){
-    /*
+
     val TAG : String = javaClass.simpleName
     var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -23,30 +25,38 @@ class ProfileEditView(private val repository: MarketPlaceRepository) : ViewModel
     //user data
     var userData: MutableLiveData<ProfileDataResponse> = MutableLiveData()
 
+    lateinit var username: String
+    lateinit var email: String
+    lateinit var phone_number: String
 
     fun updateProfile() {
-        val requestBody = GetProfileRequest(username)
-        viewModelScope.launch {
-            executeGetProfile(requestBody)
+        token = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0").toString()
+        Log.d(TAG,"token: $token")
+        if (token == "0"){
+            Log.d(TAG, "NO TOKEN")
+        }
+        else{
+            val requestBody = UpdateProfileRequest(phone_number,email, username)
+            viewModelScope.launch {
+                executeUpdateProfile(requestBody)
+            }
         }
     }
 
-    private suspend fun executeGetProfile(requestBody: GetProfileRequest) {
+    private suspend fun executeUpdateProfile(requestBody: UpdateProfileRequest) {
         try {
             val result = withContext(Dispatchers.IO) {
-                repository.getProfile(requestBody)
+                repository.UpdateProfile(token,requestBody)
             }
-            Log.d(TAG, "Profile = ${result.data[0]} ${result.data.size}")
-            //Log.d(TAG, "Profile = ${result.data[1]}")
-            userData.value = result.data[0]
+            Log.d(TAG, "ProfileEditModel print - $requestBody, result: ${result.code} ${result.data[0]}, ${result.timestamp}")
+            //userData.value = result.data[0]
+            //App.sharedPreferences.putStringValue(SharedPreferencesManager.KEY_TOKEN, result.data[0].token)
+            //App.sharedPreferences.putStringValue(SharedPreferencesManager.USERNAME_TOKEN, result.data[0].username)
             isSuccessful.value = true
-            Log.d(TAG, "ProfileViewModel - profile response: ${result.data[0]}")
+            Log.d(TAG, "ProfileEditModel - profile response:")
         } catch (e: Exception) {
-            Log.d(TAG, "ProfileViewModel - getProfile() failed withexception: ${e.message}")
+            Log.d(TAG, "ProfileEditModel - setProfile() failed withexception: ${e.message}")
             isSuccessful.value = false
         }
     }
-
-     */
-
 }

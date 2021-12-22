@@ -15,6 +15,7 @@ object BackendConstants {
 
     const val GET_PRODUCT_URL = "products"
     const val GET_PROFILE_URL = "user/data"
+    const val UPDATE_PROFILE_URL = "user/update"
     /**
      * Headers.
      */

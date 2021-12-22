@@ -4,6 +4,7 @@ import com.example.bazaar.api.types.Reponse.*
 import com.example.bazaar.api.types.Request.ForgotPasswordRequest
 import com.example.bazaar.api.types.Request.LoginRequest
 import com.example.bazaar.api.types.Request.RegisterRequest
+import com.example.bazaar.api.types.Request.UpdateProfileRequest
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -25,5 +26,8 @@ interface MarketPlaceApiService {
 
     @GET(BackendConstants.GET_PROFILE_URL)
     suspend fun getProfile(@Header(BackendConstants.HEADER_USERNAME) username: String): ProfileResponse
+
+    @POST(BackendConstants.UPDATE_PROFILE_URL)
+    suspend fun updateProfile(@Header(BackendConstants.HEADER_TOKEN) token: String, @Body request: UpdateProfileRequest): UpdatedProfileResponse
 
 }

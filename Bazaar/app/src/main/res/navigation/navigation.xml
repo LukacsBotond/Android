@@ -82,5 +82,8 @@
         tools:layout="@layout/fragment_profile_edit" >
         <argument android:name="profileData"
             app:argType="com.example.bazaar.Support.ProfileData" />
+        <action
+            android:id="@+id/action_profileEdit_to_timeline"
+            app:destination="@id/timeline" />
     </fragment>
 </navigation>
