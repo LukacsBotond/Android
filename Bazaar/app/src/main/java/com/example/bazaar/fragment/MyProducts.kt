@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -56,6 +57,13 @@ class MyProducts : Fragment(), DataAdapter.OnItemClickListener {
             recyclerView.setHasFixedSize(true)
         }
         return layout
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val addNewProduct: Button = view.findViewById(R.id.my_orders_add_product)
+        addNewProduct.setOnClickListener {
+            this.findNavController().navigate(MyProductsDirections.actionMyProductsToAddProduct())
+        }
     }
 
     override fun onItemClick(position: Int) {

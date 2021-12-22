@@ -30,5 +30,8 @@ class MarketPlaceRepository {
         return RetrofitInstance.marketPlaceApiService.updateProfile(token,updateProfileRequest)
     }
 
+    suspend fun addProduct(token : String,addProductRequest: AddProductRequest ): addP {
+        return RetrofitInstance.marketPlaceApiService.updateProfile(token,addProductRequest)
+    }
 
 }

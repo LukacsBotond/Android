@@ -85,5 +85,18 @@
     <fragment
         android:id="@+id/myProducts"
         android:name="com.example.bazaar.fragment.MyProducts"
-        android:label="MyProducts" />
+        android:label="MyProducts" >
+        <action
+            android:id="@+id/action_myProducts_to_addProduct"
+            app:destination="@id/addProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProduct"
+        android:name="com.example.bazaar.fragment.AddProduct"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" />
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="com.example.bazaar.fragment.ForgotPassword"
+        android:label="ForgotPassword" />
 </navigation>
