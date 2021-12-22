@@ -27,7 +27,6 @@ interface MarketPlaceApiService {
     @POST(BackendConstants.UPDATE_PROFILE_URL)
     suspend fun updateProfile(@Header(BackendConstants.HEADER_TOKEN) token: String, @Body request: UpdateProfileRequest): UpdatedProfileResponse
 
-    //TODO fix requests
     @POST(BackendConstants.ADD_PRODUCT_URL)
     suspend fun addProduct(@Header(BackendConstants.HEADER_TOKEN) token: String, @Body request: AddProductRequest): AddProductResponse
 

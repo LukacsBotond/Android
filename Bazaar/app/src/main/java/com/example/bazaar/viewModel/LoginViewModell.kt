@@ -20,7 +20,7 @@ class LoginViewModel (private val repository: MarketPlaceRepository) : ViewModel
     lateinit var password: String
 
     var token: MutableLiveData<String> = MutableLiveData()
-        var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
+    var isSuccessful: MutableLiveData<Boolean> = MutableLiveData()
 
 
     fun login() {
