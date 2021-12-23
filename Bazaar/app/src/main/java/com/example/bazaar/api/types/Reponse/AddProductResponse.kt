@@ -28,13 +28,13 @@ data class AddProductResponse(
     @SerializedName("title")
     val title:String,
 
-    @SerializedName("creation")
+    @SerializedName("rating")
     val rating: String,
 
-    @SerializedName("creation")
+    @SerializedName("amount_type")
     val amount_type: String,
 
-    @SerializedName("creation")
+    @SerializedName("price_type")
     val price_type: String,
 
     @SerializedName("images")
@@ -42,5 +42,4 @@ data class AddProductResponse(
 
     @SerializedName("creation_time")
     val creation_time: Long,
-
     )

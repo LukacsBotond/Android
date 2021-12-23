@@ -12,6 +12,9 @@ data class AddProductRequest(
     @SerializedName("price_per_unit")
     var price_per_unit: String,
 
+    @SerializedName("units")
+    var units: String,
+
     @SerializedName("is_active")
     var is_active: String,
 
@@ -21,6 +24,6 @@ data class AddProductRequest(
     @SerializedName("amount_type")
     var amount_type: String,
 
-    @SerializedName("price_per_type")
-    var price_per_type: String,
+    @SerializedName("price_type")
+    var price_type: String,
 )

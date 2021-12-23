@@ -94,7 +94,11 @@
         android:id="@+id/addProduct"
         android:name="com.example.bazaar.fragment.AddProduct"
         android:label="fragment_add_product"
-        tools:layout="@layout/fragment_add_product" />
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_addProduct_to_myProducts"
+            app:destination="@id/myProducts" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPassword"
         android:name="com.example.bazaar.fragment.ForgotPassword"

@@ -21,33 +21,30 @@ class AddProductView (private val repository: MarketPlaceRepository) : ViewModel
     lateinit var title: String
     lateinit var description: String
     lateinit var price_per_unit: String
+    lateinit var units: String
     lateinit var is_active: String
     lateinit var rating: String
     lateinit var amount_type: String
     lateinit var price_per_type: String
 
     fun addProduct(){
-        val requestBody = AddProductRequest(title,description,price_per_unit, is_active, rating, amount_type, price_per_type)
+        val requestBody = AddProductRequest(title,description,price_per_unit, units, is_active, rating, amount_type, price_per_type)
         viewModelScope.launch {
             executeAddProducts(requestBody)
         }
     }
 
     private suspend fun executeAddProducts(requestBody: AddProductRequest) {
-        val token = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0")
-        if (token == null) {
-            return
-        }
+        Log.d(TAG, "requestbody: $requestBody")
+        val token = App.sharedPreferences.getStringValue(SharedPreferencesManager.KEY_TOKEN, "0") ?: return
         try {
-            Log.d(TAG, "requestbody: $requestBody")
             val result = withContext(Dispatchers.IO) {
                 repository.addProduct(token, requestBody)
             }
-            Log.d(TAG, "items: ${result.creation}")
+            //Log.d(TAG, "items: ${result.creation}")
             isSuccessful.value = result.creation == "Successful"
-            //result.itemCount
         }catch (e: Exception){
-            Log.d(TAG, "TimelineViewModel - executeGetProducts() failed withe exception: ${e.message}")
+            Log.d(TAG, "AddProductViewModel - executeAddProducts() failed withe exception: ${e.message}")
             isSuccessful.value = false
         }
     }

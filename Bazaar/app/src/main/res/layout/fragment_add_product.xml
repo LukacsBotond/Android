@@ -1,14 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AddProduct">
+    android:orientation="vertical"
+    android:background="@android:color/darker_gray">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ScrollView
+        android:id="@+id/alphabet_horizon_Scroll"
+        android:layout_width="417dp"
+        android:layout_height="446dp"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/product_add_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_title"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <EditText
+                android:id="@+id/product_add_title_editText"
+                android:layout_width="match_parent"
+                android:layout_height="99dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <TextView
+                android:id="@+id/product_add_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="description"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="89dp" />
+
+            <EditText
+                android:id="@+id/product_add_description_editText"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/product_add_pricePerUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price_per_unit"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <EditText
+                android:id="@+id/product_add_pricePerUnit_editText"
+                android:layout_width="361dp"
+                android:layout_height="106dp"
+                android:ems="10"
+                android:inputType="number"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <TextView
+                android:id="@+id/product_add_units"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/units"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="89dp" />
+
+            <EditText
+                android:id="@+id/product_add_units_editText"
+                android:layout_width="match_parent"
+                android:layout_height="98dp"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="117dp" />
+            <!--
+            <TextView
+                android:id="@+id/product_add_isActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/active"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="16dp" />
+            -->
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/product_add_isActive_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/is_active"
+                tools:layout_editor_absoluteX="260dp"
+                tools:layout_editor_absoluteY="63dp" />
+
+            <TextView
+                android:id="@+id/product_add_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rating"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="89dp" />
+
+            <EditText
+                android:id="@+id/product_add_rating_editText"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:ems="10"
+                android:inputType="number"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <TextView
+                android:id="@+id/product_add_unitType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unittype"
+                tools:layout_editor_absoluteX="17dp"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <EditText
+                android:id="@+id/product_add_unitType_editText"
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <TextView
+                android:id="@+id/product_add_priceType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price_type"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="89dp" />
+
+            <EditText
+                android:id="@+id/product_add_priceType_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="117dp" />
+
+            <Button
+                android:id="@+id/product_add_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_product" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

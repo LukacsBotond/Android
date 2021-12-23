@@ -25,4 +25,12 @@
     <string name="update_profile">Update Profile</string>
     <string name="add_product">Add product</string>
     <string name="myproducts">myProducts</string>
+    <string name="product_title">Product title</string>
+    <string name="price_per_unit">price per unit</string>
+    <string name="units">units</string>
+    <string name="active">active</string>
+    <string name="is_active">is active</string>
+    <string name="rating">rating</string>
+    <string name="unittype">unitType</string>
+    <string name="price_type">price Type</string>
 </resources>
